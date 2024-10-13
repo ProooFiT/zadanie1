@@ -26,3 +26,29 @@ class lista {
                 endl;
             }
         }
+        void usunzkonca(){
+            if(!lista.empty()){
+                lista.pop_back();
+            } else {
+                cout << "lista jest pusta";
+                endl;
+            }
+        }
+
+        void usunzindexu(int index){
+            if(index >= 0 && index < lista.size()){
+                lista.erase(lista.begin()+index);
+            } else {
+                cout << "index poza zakresem";
+                endl;
+            }
+        }
+        void usunzpoczatku(int index){
+            if(!ista.empty()){
+                lista.pop_front();
+            } else {
+                cout << "lista jest pusta";
+                endl;
+            }
+        }
+        
