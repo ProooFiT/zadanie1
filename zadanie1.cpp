@@ -18,3 +18,11 @@ class lista {
         void dodajnakoniec(int element){
             lista.push_back(element);
         }
+        void dodajdoindexu(int index, int element){
+            if (index >=0 && index <= lista.size()){
+                lista.insert(lista.begin()+index, element);
+            } else {
+                cout << "index poza zakresem";
+                endl;
+            }
+        }
