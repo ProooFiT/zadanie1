@@ -72,3 +72,42 @@ class lista{
             nowy->prev = temp;
         }
     }
+
+    //usun element z początku listy
+    void usunZPoczatku() {
+        if (head == nullptr) {
+            cout << "Lista jest pusta!" << endl;
+            return;
+        }
+
+        Node* temp = head;
+        head = head->next;
+        if (head == nullptr) {
+            tail = nullptr;
+        } else {
+            head->prev = nullptr;
+        }
+        delete temp;
+        current = head;
+    }
+
+    //usun element z końca listy
+    void usunZKonca() {
+        if (head == nullptr) {
+            cout << "Lista jest pusta!" << endl;
+            return;
+        }
+
+        if (head == tail) {
+            delete head;
+            head = tail = nullptr;
+        } else {
+            Node* temp = tail;
+            tail = tail->prev;
+            tail->next = nullptr;
+            delete temp;
+        }
+        current = head;
+    }
+
+    
