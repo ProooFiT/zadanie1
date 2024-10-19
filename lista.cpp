@@ -30,3 +30,45 @@ class lista{
         }
         current = head;
     } 
+
+    //dodaj element na koniec listy
+    void dodajNaKoniec(int element) {
+        Node* nowy = new Node(element);
+        if (head == nullptr) {
+            head = tail = nowy;
+        } else {
+            tail->next = nowy; //dla tail nastpenym elementem bedzie nowy,
+            nowy->prev = tail; //dla nowego poprzednim elementem bedzie tail
+            tail = nowy;
+        }
+        if (current == nullptr) current = head;
+    }
+
+
+    // Dodaj element pod wskazany indeks
+    void dodajNaIndeks(int index, int element) {
+        if (index < 0) {
+            cout << "Indeks poza zakresem!" << endl;
+            return;
+        }
+
+        if (index == 0) {
+            dodajNaPoczatek(element);
+            return;
+        }
+
+        Node* nowy = new Node(element);
+        Node* temp = head;
+        for (int i = 0; i < index - 1 && temp != nullptr; ++i) {
+            temp = temp->next;
+        }
+
+        if (temp == nullptr || temp == tail) {
+            dodajNaKoniec(element);
+        } else {
+            nowy->next = temp->next;
+            temp->next->prev = nowy;
+            temp->next = nowy;
+            nowy->prev = temp;
+        }
+    }
