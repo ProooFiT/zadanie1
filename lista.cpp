@@ -110,4 +110,82 @@ class lista{
         current = head;
     }
 
-    
+    // Usuń element z pod wskazanego indeksu
+    void usunZIndeksu(int index) {
+        if (index < 0 || head == nullptr) {
+            cout << "Indeks poza zakresem lub lista jest pusta!" << endl;
+            return;
+        }
+
+        if (index == 0) {
+            usunZPoczatku();
+            return;
+        }
+
+        Node* temp = head;
+        for (int i = 0; i < index && temp != nullptr; ++i) {
+            temp = temp->next;
+        }
+
+        if (temp == nullptr) {
+            cout << "Indeks poza zakresem!" << endl;
+        } else if (temp == tail) {
+            usunZKonca();
+        } else {
+            temp->prev->next = temp->next;
+            temp->next->prev = temp->prev;
+            delete temp;
+        }
+    }
+
+    //wyswietl liste
+    void wyswietlListe() {
+        Node* temp = head;
+        while (temp != nullptr) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+
+    //wyświetl liste w odwrotnej kolejności
+    void wyswietlListeOdwrotnie() {
+        Node* temp = tail;
+        while (temp != nullptr) {
+            cout << temp->data << " ";
+            temp = temp->prev;
+        }
+        cout << endl;
+    }
+
+    //wyświetl nastepny element
+    void wyswietlNastepny() {
+        if (current == nullptr || current->next == nullptr) {
+            cout << "Brak następnego elementu!" << endl;
+        } else {
+            current = current->next;
+            cout << "Następny element: " << current->data << endl;
+        }
+    }
+
+    //wyświetl poprzedni element
+    void wyswietlPoprzedni() {
+        if (current == nullptr || current->prev == nullptr) {
+            cout << "Brak poprzedniego elementu!" << endl;
+        } else {
+            current = current->prev;
+            cout << "Poprzedni element: " << current->data << endl;
+        }
+    }
+
+    //czysc liste
+    void czyscListe() {
+        while (head != nullptr) {
+            usunZPoczatku();
+        }
+    }
+
+    //Destruktor
+    ~ListaDwukierunkowa() {
+        czyscListe();
+    }
