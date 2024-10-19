@@ -6,7 +6,7 @@ int main() {
 
     // Dodaj elementy
     lista.dodajNaPoczatek(10);
-    lista.dodajNaPoczatek(20);
+    lista.dodajNaPoczatek(5);
     lista.dodajNaKoniec(30);
     lista.dodajNaIndeks(1, 15);
 
